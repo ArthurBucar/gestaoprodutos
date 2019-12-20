@@ -1,0 +1,21 @@
+<h2>Meu Formulário</h2>
+<form #meuform="ngForm">
+
+    <div class="form-group">
+        <label>Nome: </label>
+        <input #nome="ngModel" type="text" class="form-control" [ngClass]="{'is-invalid': nome.invalid && nome.touched}" name="formulario.nome" [(ngModel)]="formulario.nome" required/>
+        <div class="invalid-feedback">
+            Campo obrigatório
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Sobrenome: </label>
+        <input #sobrenome="ngModel" type="text" class="form-control" name="formulario.sobrenome" [(ngModel)]="formulario.sobrenome"/>
+    </div>
+
+    <button class="btn btn-primary" type="button" (click)="salvar()">Salvar</button>
+
+</form>  
+
+{{formulario.nome}} {{formulario.sobrenome}}

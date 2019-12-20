@@ -1,0 +1,68 @@
+<h2>Novo Produto</h2>
+
+<form [formGroup]="produtoForm">
+    <div class="form-row">
+
+
+        <div class="form-group col-md-8">
+            <label>Nome</label>
+            <input formControlName="productName" id="productNameId" type="text" class="form-control"
+                placeholder="Name (required)"
+                [ngClass]="{ 'is-invalid': produtoForm.controls.productName.touched && produtoForm.controls.productName.invalid }" />
+
+            <div class="invalid-feedback">
+                <span *ngIf="produtoForm.controls.productName.errors?.required">Nome Obrigatório</span>
+            </div>
+        </div>
+
+        <div class="form-group col-md-4">
+            <label>Código</label>
+            <input formControlName="productCode" id="productCodeId" type="text" class="form-control"
+                placeholder="Código (required)"
+                [ngClass]="{ 'is-invalid': produtoForm.controls.productCode.touched && produtoForm.controls.productCode.invalid }" />
+
+            <div class="invalid-feedback">
+                <span *ngIf="produtoForm.controls.productCode.errors?.required">Código obrigatório.</span>
+            </div>
+        </div>
+
+        
+        <div class="form-group col-md-4">
+                <label>Preço</label>
+                <input formControlName="price" id="priceId" type="text" class="form-control"
+                    placeholder="Preço (required)"
+                    [ngClass]="{ 'is-invalid': produtoForm.controls.price.touched && produtoForm.controls.price.invalid }" />
+    
+                <div class="invalid-feedback">
+                    <span *ngIf="produtoForm.controls.price.errors?.required">Preço obrigatório.</span>
+                </div>
+        </div>
+
+        <div class="form-group col-md-4">
+                <label>Rating</label>
+                <input formControlName="starRating" id="starRatingId" type="text" class="form-control"
+                    placeholder="Rating (required)"
+                    [ngClass]="{ 'is-invalid': produtoForm.controls.starRating.touched && produtoForm.controls.starRating.invalid }" />
+    
+                <div class="invalid-feedback">
+                    <span *ngIf="produtoForm.controls.starRating.errors?.range">de 1 - 5</span>
+                </div>
+        </div>
+
+        <div class="form-group col-md-12">
+                <label>Descrição</label>
+            description: ['', [Validators.required]]
+            description: ['', [Validators.required]]
+                <textarea formControlName="description" id="descriptionId" type="text" class="form-control"
+                    placeholder="Descrição (required)"
+                    [ngClass]="{ 'is-invalid': produtoForm.controls.description.touched && produtoForm.controls.description.invalid }"></textarea>
+    
+                <div class="invalid-feedback">
+                    <span *ngIf="produtoForm.controls.description.errors?.required">Desricao obrigatório.</span>
+                </div>
+        </div>
+    </div>
+
+    <button [disabled]="produtoForm.invalid" type="button" class="btn btn-primary" (click)="salvar()">Salvar</button>
+    <button type="button" [routerLink]="['/produto/listar']" class="btn btn-secondary ml-2">Voltar</button>
+</form>

@@ -1,0 +1,31 @@
+<h2>Lista Produtos</h2>
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label"> Filtrar por:</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="filtrarPor">
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <th><button (click)="alterarFlag()" class="btn btn-success">{{exibirImagem ? 'Esconder' : 'Exibir'}}</button></th>
+        <th>Nome</th>
+        <th>Código</th>
+        <th>Preço</th>
+        <th>Ranking</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let produto of produtosFiltrados">
+            <td><img *ngIf ="exibirImagem && produto.imageUrl"[src]="produto.imageUrl" width="40" height="40" [title]="produto.productName"/></td>
+            <td><a [routerLink]="['/produto/novo', produto.id]">{{produto.productName}}</a></td>
+            <td>{{produto.productCode | lowercase | substituircaractere: '-'}}</td>
+            <td>{{produto.price}}</td>
+            <td>
+                <app-estrela [rating]="produto.starRating">
+                </app-estrela>    
+            </td>
+            
+        </tr>
+    </tbody>
+</table>
